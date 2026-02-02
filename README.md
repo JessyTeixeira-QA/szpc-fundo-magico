@@ -1,112 +1,99 @@
-# 🪄 Gerador de Background Mágico
+# 🪄 Fundo Mágico - Gerador de Backgrounds com IA
+
+<p align="center">
+  <img src="src/images/bg.JPG" alt="Fundo Mágico" width="100%">
+</p>
 
 [![n8n](https://img.shields.io/badge/Automated%20by-n8n-FF6D5A?style=for-the-badge&logo=n8n)](https://n8n.io/)
 [![JS](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![CSS3](https://img.shields.io/badge/CSS3-Animated-1572B6?style=for-the-badge&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-Transforme descrições textuais em backgrounds animados.
-Este projeto utiliza **n8n** e **IA** para criar e injetar estilos dinamicamente.
+O **Fundo Mágico** é uma aplicação interativa que utiliza Inteligência Artificial para transformar descrições textuais em backgrounds animados e estilizados em tempo real. O projeto une o poder do desenvolvimento **Front-end** com a flexibilidade da automação via **n8n**.
 
 ---
 
 ## 📋 Sobre o Projeto
 
-Aplicação interativa que une **Front-end** e **Automação**.
-O usuário descreve um cenário (ex: *"espaço sideral"*) e a IA gera o código **HTML/CSS**, que é aplicado instantaneamente ao fundo do site.
+Este projeto foi desenvolvido durante a **Semana do Zero ao Programador Contratado (SZPC)**. A ideia central é permitir que o usuário descreva um cenário ou estilo (ex: *"um gradiente espacial com estrelas cadentes"*) e a IA gere automaticamente o código HTML e CSS necessário para criar esse efeito visual, aplicando-o instantaneamente ao fundo da página.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- **Prompt-to-Style:** IA gera animações baseadas em texto
-- **Preview em tempo real:** Injeção dinâmica de CSS no DOM
-- **Visualização de código:** HTML e CSS disponíveis para cópia
-- **Responsivo:** Interface adaptada para mobile e desktop
+- **Prompt-to-Style:** Geração de animações e estilos baseados em descrições naturais.
+- **Preview em Tempo Real:** Injeção dinâmica de CSS no DOM para visualização imediata.
+- **Exibição de Código:** Mostra o código HTML e CSS gerado pela IA para que possa ser copiado e usado em outros projetos.
+- **Design Responsivo:** Interface adaptada para diferentes tamanhos de tela (Mobile e Desktop).
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias Utilizadas
 
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **Integração:** Fetch API
-- **Backend / Automação:** [n8n](https://n8n.io/) + Google Gemini AI
-
----
-
-## ⚙️ Configuração (n8n)
-
-O workflow consiste em:
-
-1. **Webhook** – Recebe o prompt do usuário
-2. **AI Agent** – Gera um JSON contendo `html` e `css`
-3. **Code Node** – Limpa a resposta (remove markdown e caracteres extras)
-4. **Respond to Webhook** – Retorna os dados ao frontend
+- **Frontend:**
+  - HTML5
+  - CSS3 (Variáveis, Flexbox, Animações)
+  - JavaScript Vanilla (ES6+)
+- **Integração & Backend:**
+  - [n8n](https://n8n.io/) (Plataforma de automação low-code)
+  - Google Gemini AI (Modelo de linguagem para geração de código)
+  - Fetch API para comunicação assíncrona
 
 ---
 
-## 📂 Estrutura do Projeto
+## 📂 Estrutura de Pastas
 
 ```text
 ├── src/
-│   ├── css/          # estilos, reset e responsivo
-│   ├── js/           # index.js (lógica da API)
-├── index.html        # página principal
-└── README.md         # documentação
+│   ├── css/          # Arquivos de estilização (reset, estilos globais e responsividade)
+│   ├── images/       # Ativos visuais e imagens de fundo
+│   ├── js/           # Lógica da aplicação e integração com a API
+├── index.html        # Estrutura principal da página
+└── README.md         # Documentação do projeto
+```
+
+---
+
+## ⚙️ Configuração do Workflow (n8n)
+
+Para que o projeto funcione, é necessário um workflow no n8n configurado da seguinte forma:
+
+1. **Webhook Node:** Recebe o prompt do usuário via método POST.
+2. **AI Agent / Google Gemini:** Processa o texto e gera um objeto JSON contendo as chaves `html` e `css`.
+3. **Code Node:** Limpa a resposta da IA, garantindo que apenas o código puro seja retornado (removendo blocos de markdown).
+4. **Respond to Webhook:** Retorna os dados processados para o frontend.
 
 ---
 
 ## 🔧 Como Executar
 
-Siga os passos abaixo para rodar o projeto localmente:
-
----
-
-### 1️⃣ Clone o repositório
-
+### 1. Clone o Repositório
 ```bash
-git clone https://github.com/seu-usuario/fundo-magico.git
+git clone https://github.com/JessyTeixeira-QA/szpc-fundo-magico.git
+```
+
+### 2. Configure a URL da API
+No arquivo `src/js/index.js`, localize a constante de URL e substitua pelo seu endpoint do n8n:
+```javascript
+const resposta = await fetch("SUA_URL_DO_WEBHOOK_AQUI", { ... });
+```
+
+### 3. Rode o Projeto
+Você pode abrir o arquivo `index.html` diretamente no navegador ou utilizar a extensão **Live Server** no VS Code para uma melhor experiência de desenvolvimento.
 
 ---
 
-2️⃣ Configure o Webhook do n8n
+## 👨‍💻 Autor
 
-No arquivo src/js/index.js, ajuste a URL do Webhook:
-
-const URL = "http://localhost:5678/webhook-test/fundo-magico";
-
----
-
-
-3️⃣ Execute o projeto
-
-Abra o arquivo index.html utilizando a extensão Live Server no VS Code.
+Desenvolvido por **Jessica Ferreira Teixeira**.
+Projeto criado com foco em aprendizado de integração de APIs e manipulação dinâmica de DOM.
 
 ---
 
-👨‍💻 Autor
+## 📄 Licença
 
-Desenvolvido por Jessica Ferreira Teixeira
-Projeto criado durante a Semana do Zero ao Programador Contratado
-
----
-
-💡 Dica Extra
-
-Caso o VS Code apresente erro com acentuação ou caracteres especiais, verifique se o arquivo está salvo com a codificação UTF-8.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes (se disponível).
 
 ---
 
-
-### ✅ Por que essa versão é ideal
-- ✔️ Texto explicativo **fora** de blocos de código
-- ✔️ Apenas comandos e código **dentro** dos blocos
-- ✔️ Leitura clara para humanos e robôs (GitHub / ATS)
-- ✔️ Padrão usado em projetos profissionais e portfólios QA/Dev
-
-Se quiser, eu posso:
-- Ajustar o README para **nível empresa**
-- Adaptar para **portfólio QA**
-- Criar a **descrição perfeita do repositório**
-- Revisar como se fosse um **tech lead**
-
-Só dizer o próximo passo 🚀
+<p align="center">Feito com 💜 por Jessica Ferreira Teixeira</p>
